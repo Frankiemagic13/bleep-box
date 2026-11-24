@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bleep Box — Start here</title>
+<style>
+  :root { --bg:#0E1013; --card:#1A1D22; --line:#2C3038; --text:#E8EAED; --muted:#A3A9B1; --accent:#FF8A3D; --red:#E5484D; --green:#4ADE80; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+  header { display: flex; align-items: center; gap: 18px; margin-bottom: 8px; }
+  header img { width: 64px; height: 64px; border-radius: 14px; }
+  h1 { margin: 0; font-size: 36px; letter-spacing: -0.01em; }
+  .lead { color: var(--muted); font-size: 18px; margin: 4px 0 32px; }
+  h2 { font-size: 22px; margin: 40px 0 14px; display: flex; align-items: center; gap: 12px; }
+  h2 .n { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #15171B; font-size: 16px; font-weight: 700; flex: none; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px; }
+  ol, ul { margin: 0; padding-left: 22px; }
+  li { margin: 6px 0; }
+  li::marker { color: var(--muted); }
+  b, strong { color: #fff; }
+  code, kbd { font-family: Consolas, "Cascadia Mono", monospace; font-size: 14px; background: #121418; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; }
+  .warn { border-color: #6B3B1E; background: #241A13; }
+  .warn b { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 14px; }
+  tr:last-child td { border-bottom: 0; }
+  .keys { display: flex; flex-wrap: wrap; gap: 20px; }
+  .key { display: flex; align-items: center; gap: 14px; flex: 1 1 220px; }
+  .key img { width: 72px; height: 72px; border-radius: 10px; flex: none; }
+  .key span { color: var(--muted); font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+  .part { background: #121418; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .part b { display: block; margin-bottom: 4px; }
+  .part span { color: var(--muted); font-size: 14px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
+  footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="{{PLUGIN}}" alt="">
+    <h1>Bleep Box</h1>
+  </header>
+  <p class="lead">Push a Stream Deck key. Your mic goes silent and a bleep plays on your stream. OBS gets it as its own mic source: <b>Bleep Box Mic</b>. You do not need a virtual audio cable.</p>
+
+  <div class="grid">
+    <div class="part"><b>OBS plugin</b><span>Adds the Bleep Box Mic source to OBS.</span></div>
+    <div class="part"><b>Bleep Box app</b><span>Settings, a large BLEEP button, and the hotkey Ctrl + Shift + B.</span></div>
+    <div class="part"><b>Stream Deck plugin</b><span>The Bleep key. Hold it to bleep.</span></div>
+  </div>
+
+  <h2>What you need</h2>
+  <div class="card">
+    <ul>
+      <li>Windows 10 or Windows 11 (64-bit)</li>
+      <li>OBS Studio 30 or later</li>
+      <li>Stream Deck software 6.4 or later</li>
+    </ul>
+  </div>
+
+  <h2><span class="n">1</span>Install</h2>
+  <div class="card">
+    <ol>
+      <li>Close <b>OBS</b>.</li>
+      <li>Copy this <b>BleepBox</b> folder to your computer (for example, to Downloads). If it is a zip file, right-click it and select <b>Extract All</b>.</li>
+      <li>Double-click <b>Install.bat</b>.</li>
+      <li>Windows asks: "Do you want to allow this app to make changes?" Click <b>Yes</b>.<br>
+          <span style="color:var(--muted)">If you see "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</span></li>
+      <li>The Stream Deck window opens. Click <b>Install</b>.</li>
+      <li>In the black installer window, push <b>Enter</b> to close it.</li>
+    </ol>
+  </div>
+
+  <h2><span class="n">2</span>Set up OBS</h2>
+  <div class="card">
+    <ol>
+      <li>Open <b>OBS</b>.</li>
+      <li>In the <b>Sources</b> box, click <b>+</b>. Select <b>Bleep Box Mic</b>. Click <b>OK</b>.</li>
+      <li>Select your microphone. Set the input gain if necessary. Click <b>OK</b>.</li>
+      <li>Find your old microphone in the <b>Audio Mixer</b> (for example "Mic/Aux"). Click its speaker icon to mute it, or remove it.</li>
+      <li>To hear the bleep in your headphones: <b>Edit → Advanced Audio Properties</b>. On the <b>Bleep Box Mic</b> line, set <b>Audio Monitoring</b> to <b>Monitor and Output</b>.</li>
+    </ol>
+  </div>
+  <div class="card warn" style="margin-top:12px">
+    <b>Important:</b> Do step 4. If the old mic source stays on, viewers hear your voice under the bleep.
+  </div>
+
+  <h2><span class="n">3</span>Set up Stream Deck</h2>
+  <div class="card">
+    <ol>
+      <li>Open the <b>Stream Deck</b> window.</li>
+      <li>In the list on the right, find <b>Bleep Box</b>.</li>
+      <li>Drag <b>Bleep</b> onto a key.</li>
+      <li>Click the key to see its settings:
+        <ul>
+          <li><b>Mode</b>: <i>Hold to bleep</i> (bleeps while you hold the key) or <i>Press to start / stop</i>.</li>
+          <li><b>Sound</b>: <i>Use app setting</i>, or a sound for this key only. <i>Mute only</i> mutes the mic with no sound.</li>
+          <li><b>Volume</b>: <i>Use app volume</i>, or a volume for this key only.</li>
+        </ul>
+      </li>
+    </ol>
+    <p style="margin:12px 0 0;color:var(--muted)">Tip: Make two keys, for example one with "Classic 1 kHz" and one with "Duck quack".</p>
+  </div>
+
+  <h2>What the key shows</h2>
+  <div class="card keys">
+    <div class="key"><img src="{{READY}}" alt="BLEEP key"><span><b>Ready.</b><br>Your mic is live.</span></div>
+    <div class="key"><img src="{{BLEEP}}" alt="BLEEPING key"><span><b>Bleeping.</b><br>Your mic is muted.</span></div>
+    <div class="key"><img src="{{OFF}}" alt="APP OFF key"><span><b>Not connected.</b><br>Open OBS.</span></div>
+  </div>
+
+  <h2><span class="n">4</span>Use the Bleep Box app</h2>
+  <div class="card">
+    <ul>
+      <li>Open <b>Bleep Box</b> from the Start menu or the desktop shortcut.</li>
+      <li>Hold the large <b>BLEEP</b> button, or hold <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>.</li>
+      <li>Select a <b>bleep sound</b> and set the <b>bleep volume</b>.</li>
+      <li>To use your own sound: click <b>Choose .wav file…</b>.</li>
+      <li>You do not have to keep the app open. The Stream Deck key works when only OBS is open.</li>
+    </ul>
+  </div>
+
+  <h2>Problems</h2>
+  <div class="card" style="padding:4px 12px">
+    <table>
+      <tr><th>Problem</th><th>Do this</th></tr>
+      <tr><td>The app shows "OBS plugin not found".</td><td>Open OBS. If it still shows the message, close OBS and do Install again.</td></tr>
+      <tr><td>The app shows "Add the source".</td><td>Do step 2 (add Bleep Box Mic in OBS).</td></tr>
+      <tr><td>The app shows "Mic error".</td><td>In OBS, double-click Bleep Box Mic and select a different microphone.</td></tr>
+      <tr><td>Viewers hear my voice during the bleep.</td><td>Mute the old mic in OBS (step 2.4). In the app, turn on "Mute mic fully while bleeping".</td></tr>
+      <tr><td>The key shows APP OFF.</td><td>Open OBS.</td></tr>
+      <tr><td>"Bleep Box Mic" is not in the OBS list.</td><td>Close OBS. Do Install again. Then open OBS.</td></tr>
+      <tr><td>I hear my voice two times in my headphones.</td><td>In Advanced Audio Properties, set the old mic to "Monitor Off".</td></tr>
+    </table>
+  </div>
+
+  <h2>Uninstall</h2>
+  <div class="card">
+    <ol>
+      <li>Close OBS.</li>
+      <li>Double-click <b>Uninstall.bat</b>. Click <b>Yes</b>.</li>
+      <li>In Stream Deck: <b>Preferences → Plugins → Bleep Box → Uninstall</b>.</li>
+    </ol>
+  </div>
+
+  <footer>Bleep Box 1.0 · Frankie Valle Tech · Everything stays on your computer (port 28196). Nothing goes to the internet.</footer>
+</main>
+</body>
+</html>

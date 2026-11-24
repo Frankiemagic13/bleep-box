@@ -1,0 +1,51 @@
+{
+  "Name": "Bleep Box",
+  "Version": "1.0.0.0",
+  "Author": "Frankie Valle Tech",
+  "Description": "Hold a key to mute your mic and play a bleep. Needs Bleep Box (Mac app, or OBS plugin on Windows).",
+  "URL": "https://github.com/",
+  "Icon": "imgs/plugin",
+  "Category": "Bleep Box",
+  "CategoryIcon": "imgs/category",
+  "CodePath": "plugin.html",
+  "PropertyInspectorPath": "pi.html",
+  "SDKVersion": 2,
+  "UUID": "com.frankievalletech.bleepbox",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "13"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "6.4"
+  },
+  "Actions": [
+    {
+      "UUID": "com.frankievalletech.bleepbox.bleep",
+      "Name": "Bleep",
+      "Icon": "imgs/action",
+      "Tooltip": "Hold to mute your mic and bleep",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "States": [
+        {
+          "Image": "imgs/key-ready",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "imgs/key-bleeping",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        }
+      ]
+    }
+  ]
+}

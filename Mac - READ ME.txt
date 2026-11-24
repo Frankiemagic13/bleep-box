@@ -1,0 +1,111 @@
+BLEEP BOX FOR MAC (with Wave Link)
+==================================
+
+Bleep Box gets your microphone, mutes it and plays a bleep when you push
+a Stream Deck key. Wave Link gets the result as an app channel.
+
+  Wave mic --> Bleep Box app --> Wave Link "Bleep Box" channel --> Stream mix
+                    ^
+             Stream Deck key / Control + Shift + B
+
+You need:
+  - macOS 13 or later
+  - Wave Link 3 (with "Create Channel -> Add App")
+  - Stream Deck software 6.4 or later
+  - Xcode Command Line Tools (the installer asks for them if necessary)
+
+
+1. INSTALL
+----------
+1. Double-click "Mac - Build and Install.command".
+   If macOS says that it cannot open the file: right-click the file,
+   click Open, then click Open again.
+2. If macOS asks for the Command Line Tools, click Install. When the
+   installation is finished, double-click the file again.
+3. The build takes approximately 1 minute. Then:
+   - "Bleep Box" goes into Applications and opens.
+   - The Stream Deck window opens. Click Install.
+4. Bleep Box asks for access to the microphone. Click Allow.
+
+
+2. SET UP BLEEP BOX
+-------------------
+1. In "Device", select your Wave microphone.
+2. Speak. Make sure that the level meter moves.
+3. Set "Input gain" if necessary (100% = no change).
+4. Select a bleep sound and set the bleep volume.
+
+
+3. SET UP WAVE LINK
+-------------------
+1. Open Wave Link.
+2. Click Create Channel -> Add App -> Bleep Box.
+   (Bleep Box must be open. If it is not in the list, speak into the mic
+   one time, then look again.)
+3. In the routing table:
+   - Bleep Box channel -> Stream mix: ON
+   - Wave mic channel  -> Stream mix: OFF
+   IMPORTANT: If the Wave mic stays on in the Stream mix, viewers hear
+   your voice under the bleep.
+4. Monitor mix (your headphones): Bleep Box channel OFF.
+   Bleep Box plays the bleep (and only the bleep) to your headphones
+   itself: Bleep Box -> "Play the bleep in my headphones" ON, and select
+   your headphones in "Headphones".
+   Do NOT add "Bleep Box Monitor" to Wave Link.
+   In Bleep Box, set "Stream audio output" to an output that you do not
+   listen to, so you do not hear your own voice.
+5. Recording mix: do the same as the Stream mix, if you want the bleep
+   in your recordings (also in Wave Sampler).
+
+
+4. SET UP STREAM DECK
+---------------------
+1. In the Stream Deck window, find the "Bleep Box" category.
+2. Drag "Bleep" onto a key.
+3. Settings of the key:
+   - Mode:   Hold to bleep, or Press to start / stop
+   - Sound:  Use app setting, one sound for this key, or Mute only
+   - Volume: Use app volume, or one volume for this key
+
+Key images:
+   Orange BLEEP     = ready, mic is live
+   Red BLEEPING     = bleep on, mic muted
+   Grey APP OFF     = Bleep Box is not open
+
+
+5. USE IT
+---------
+- Hold the Stream Deck key, the large BLEEP button, or
+  Control + Shift + B.
+- When you close the Bleep Box window, the app stays on (the Stream Deck
+  key still works). To stop it: Bleep Box menu -> Quit Bleep Box.
+- To open it automatically when you log in: System Settings -> General ->
+  Login Items -> + -> Bleep Box.
+- "Choose sound file..." accepts WAV, AIFF, MP3 and M4A.
+
+
+PROBLEMS
+--------
+- The level meter does not move:
+  System Settings -> Privacy & Security -> Microphone -> Bleep Box: ON.
+  Then quit Bleep Box and open it again.
+- Bleep Box is not in the Wave Link "Add App" list:
+  Make sure that Bleep Box is open and the level meter moves.
+- I hear my voice (echo / feedback):
+  a) Wave Link Monitor mix: turn OFF the Wave mic OR the Bleep Box channel
+     (not both on).
+  b) Bleep Box -> "Bleep Box sound output": select an output that you do
+     not listen to (for example your monitor's audio output). Wave Link
+     still gets the Bleep Box audio.
+- There is a small delay on my voice in the stream:
+  This is normal (approximately 20-40 ms). If necessary, add a small
+  sync offset to your camera in OBS.
+- The Stream Deck key shows APP OFF:
+  Open Bleep Box.
+
+
+UPDATE / UNINSTALL
+------------------
+- Update: double-click "Mac - Build and Install.command" again.
+- Uninstall: drag "Bleep Box" from Applications to the Trash.
+  Stream Deck -> Settings -> Plugins -> Bleep Box -> Uninstall.

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bleep settings</title>
+  <style>
+    body { margin: 0; padding: 12px 14px; background: #2D2D2D; color: #D8D8D8;
+           font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; }
+    .row { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 10px; margin-bottom: 12px; }
+    label.l { color: #9A9A9A; }
+    select, input[type=range] { width: 100%; }
+    select { height: 28px; background: #3D3D3D; color: #FFF; border: 1px solid #4A4A4A; border-radius: 3px; padding: 0 6px; font-size: 12px; }
+    input[type=range] { accent-color: #FF8A3D; }
+    .inline { display: flex; align-items: center; gap: 8px; color: #FFF; }
+    .status { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: #252525; border-radius: 4px; color: #C8C8C8; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #777; flex: none; }
+    .hint { color: #8E8E8E; margin: 4px 0 12px 106px; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <label class="l" for="mode">Mode</label>
+    <select id="mode">
+      <option value="hold">Hold to bleep</option>
+      <option value="toggle">Press to start / stop</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label class="l" for="sound">Sound</label>
+    <select id="sound">
+      <option value="app">Use app setting</option>
+      <option value="classic">Classic 1 kHz</option>
+      <option value="censor">TV censor</option>
+      <option value="dolphin">Dolphin</option>
+      <option value="quack">Duck quack</option>
+      <option value="horn">Air horn</option>
+      <option value="custom">My .wav (set in app)</option>
+      <option value="none">Mute only (no sound)</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label class="l" for="useAppVolume">Volume</label>
+    <span class="inline"><input type="checkbox" id="useAppVolume" checked> Use app volume</span>
+  </div>
+  <div class="row" id="volRow" style="display:none">
+    <label class="l" for="volume">Key volume</label>
+    <span class="inline"><input type="range" id="volume" min="0" max="100" value="80"> <span id="volText">80%</span></span>
+  </div>
+
+  <div class="status"><span class="dot" id="dot"></span><span id="statusText">Looking for Bleep Box…</span></div>
+  <p class="hint" style="margin-left:0">Mac: the Bleep Box app must be open. Windows: OBS must be open with the Bleep Box Mic source.</p>
+
+  <script src="pi.js"></script>
+</body>
+</html>

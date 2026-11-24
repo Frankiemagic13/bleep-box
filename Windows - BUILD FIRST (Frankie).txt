@@ -1,0 +1,41 @@
+BLEEP BOX - BUILD FIRST (for Frankie)
+=====================================
+
+This folder is almost ready to share. Two files are missing:
+  - obs-plugin\bleep-box\bin\64bit\bleep-box.dll   (OBS plugin)
+  - app\BleepBox.exe                                (Bleep Box app)
+
+Only a Windows computer can make these two files. GitHub makes them for you
+on a free Windows build computer. Do these steps one time.
+
+1. Open Terminal on your Mac. Go into this folder:
+     cd ~/Downloads/BleepBox
+
+2. Make a new GitHub repo and send this folder to it:
+     git init -b main
+     git add -A
+     git commit -m "Bleep Box"
+     gh repo create bleep-box --private --source=. --push
+
+   (Use Terminal, not drag-and-drop on the GitHub website. The folder
+   ".github" is hidden in Finder, and the website upload can skip it.)
+
+3. On github.com, open the "bleep-box" repo. Click the "Actions" tab.
+   Wait for "Build Bleep Box" to show a green check (about 5 min).
+
+4. Click the build. At the bottom, under "Artifacts", download "BleepBox-Share".
+
+5. Unzip it. You get a "BleepBox" folder with all the files.
+   That folder is the one to share. Zip it and send it.
+   The person opens "START HERE.html" and follows the steps.
+
+If the build shows a red X: open the build, copy the error text, and send it
+to Claude.
+
+To make a new version later: change the code in "source", then
+  git add -A && git commit -m "update" && git push
+GitHub builds again.
+
+MAC VERSION: you do not need GitHub for it. Double-click
+"Mac - Build and Install.command" (see "Mac - READ ME.txt").
+GitHub also builds it: download "BleepBox-Mac" from the same build.

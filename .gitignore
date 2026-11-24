@@ -1,0 +1,12 @@
+build/
+out/
+dist/
+obs-dl/
+obs-sdk/
+obs-src/
+source/app/bin/
+source/app/obj/
+source/mac/.build/
+source/mac/build/
+Claude outputs/
+.DS_Store

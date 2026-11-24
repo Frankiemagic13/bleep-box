@@ -141,13 +141,14 @@
                             <ContentPresenter IsHitTestVisible="False" Margin="12,0,36,0" VerticalAlignment="Center"
                                               Content="{TemplateBinding SelectionBoxItem}"
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"/>
-                            <Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom"
+                            <Popup x:Name="PART_Popup" Placement="Bottom"
+                                   IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                                    AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
                                 <Border Background="#1C1F24" BorderBrush="#343941" BorderThickness="1" CornerRadius="6"
                                         MaxHeight="300"
                                         MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}">
-                                    <ScrollViewer>
-                                        <ItemsPresenter/>
+                                    <ScrollViewer SnapsToDevicePixels="True">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
                                     </ScrollViewer>
                                 </Border>
                             </Popup>
@@ -190,6 +191,7 @@
                         <TextBlock Style="{StaticResource Label}" Text="Device"/>
                         <ComboBox x:Name="DeviceCombo" Style="{StaticResource DarkCombo}"
                                   DropDownOpened="DeviceCombo_DropDownOpened"
+                                  DropDownClosed="DeviceCombo_DropDownClosed"
                                   SelectionChanged="DeviceCombo_SelectionChanged"/>
                         <TextBlock Style="{StaticResource Label}" Text="Level"/>
                         <UniformGrid x:Name="Meter" Columns="30" Rows="1" Height="22"/>

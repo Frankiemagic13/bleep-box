@@ -392,6 +392,9 @@ namespace BleepBox
         {
             var list = await client.GetDevices();
             if (list == null) return;
+            // Do not rebuild the list when nothing changed (rebuilding an open list breaks the click)
+            var current = DeviceCombo.Items.OfType<Device>().Select(d => d.Id).ToList();
+            if (current.SequenceEqual(list.Select(d => d.Id))) return;
             suppress = true;
             try
             {
@@ -408,6 +411,14 @@ namespace BleepBox
 
         private async void DeviceCombo_DropDownOpened(object sender, EventArgs e)
         {
+            if (!connected || DeviceCombo.Items.Count > 0) return;
+            string current = (DeviceCombo.SelectedItem as Device)?.Id;
+            await LoadDevices(current);
+        }
+
+        private async void DeviceCombo_DropDownClosed(object sender, EventArgs e)
+        {
+            // Pick up microphones that were plugged in, for next time
             if (!connected) return;
             string current = (DeviceCombo.SelectedItem as Device)?.Id;
             await LoadDevices(current);
